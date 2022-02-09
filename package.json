@@ -1,0 +1,18 @@
+{
+  "name": "webplace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Erick Bispo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2",
+    "express-handlebars": "^6.0.2",
+    "moment": "^2.29.1",
+    "mysql": "^2.18.1"
+  }
+}
