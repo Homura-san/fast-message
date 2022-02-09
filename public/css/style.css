@@ -45,13 +45,13 @@ header{
 }
 .history{
   display: block;
-  height: 800px;
+  height: 600px;
   overflow-y: scroll;
   scroll-behavior: smooth;
 }
 .msg{
+  border: solid 1px
   margin-bottom: 5px;
-  border: solid 0.5px black;
   border-radius: 6px;
 }
 .erase{
