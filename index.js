@@ -25,15 +25,20 @@ app.get('/', (req, res) => {
 
 app.post('/chat', (req, res) => {
   moment.locale('pt-br')
-  
   var user = {...req.body}
+  try {
+  if(!user.nome) throw 'Favor informe o nome do usuário'
+  if(!user.conteudo) throw 'Favor informe a mensagem!'
   db.query(`INSERT INTO chat 
       (conteudo, data, nome) 
         VALUES 
       ("${user.conteudo}", "${moment().format('llll')}", "${user.nome}")`, (error) => {
-    if(error) return res.status(500).send(error)
+    if(error) return res.status(500).send(error.sqlMessage)
     res.status(200).send()
   })
+  } catch (err) {
+    res.status(500).send(err)
+  }
 })
 
 app.delete('/del', (req, res) => {

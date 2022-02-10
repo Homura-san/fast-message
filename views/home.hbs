@@ -18,6 +18,7 @@
   </div>
 </header>
 <div class="content">
+  
   <div class="history">
     {{#each results}}
     <div class="msg">
@@ -35,14 +36,32 @@
   </div>
     {{/each}}
   </div>
+  {{!-- <div class="input" id="nomecamp">
+    <input class="form-control" placeholder="Insira seu nome" type="text" id="nome" />
+    <button id="conf" class="btn btn-outline-secondary" onclick="confNome()">Confirmar</button>
+  </div> --}}
 </div>
 
-<div class="input" id="nomecamp">
-<input class="" placeholder="Insira seu nome" type="text" id="nome" size="20" />
-<button id="conf" class="btn btn-outline-secondary" onclick="confNome()">Confirmar</button>
+
+
+<div class="input">
+  <div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="">Insira seu nome</span>
+  </div>
+  <input type="text" placeholder="Nome" class="form-control" id="nome">
+  <input type="text" placeholder="Corpo da mensagem" class="form-control" id="insert">
 </div>
 
-<footer class="input">
-  <input type="text" id="insert" placeholder="Insira sua mensagem aqui..." />
+  {{!-- <input type="text" id="insert" placeholder="Insira sua mensagem aqui..." /> --}}
   <button type="submit" class="btn btn-outline-success" onclick="enviarMsg()">Enviar</button>
+</div>
+
+<footer>
+  <footer>
+        <p>Copyright © Por Erick Sotero 2022</p>
+        <p>Erick Ltda. - CPF/CNPJ: 12.345.678/0000-01 - Av. Bernardino de Campos, 98 - Feira de Santana, BA 12345-678
+        </p>
+        <p>info@meusite.com - Tel: (75) 3456-7890 | Estimativa de entrega 2 - 5 dias úteis</p>
+    </footer>
 </footer>

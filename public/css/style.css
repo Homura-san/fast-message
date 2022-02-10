@@ -37,21 +37,24 @@ header{
   color: white;
 }
 .content{
-  width: 80%;
+  width: 90%;
   margin: 0%;
   display: flex;
-  flex-direction: column;
-  border: solid 3px azure;
+  /* flex-direction: column; */
 }
 .history{
   display: block;
-  height: 600px;
+  width: 75%;
+  height: 550px;
   overflow-y: scroll;
   scroll-behavior: smooth;
 }
 .msg{
-  border: solid 1px
-  margin-bottom: 5px;
+  width: 65%;
+  background: #5f9ea0;
+  border: solid 0.5px #5f9ea0;
+  margin-top: 10px;
+  margin-bottom: 20px;
   border-radius: 6px;
 }
 .erase{
@@ -65,13 +68,26 @@ header{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 30%;
 }
-footer{
+.input{
   display: flex;
   justify-content: center;
   width: 100%;
   margin-bottom: 50px;
+}
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #6495ed;
+    color: #FFF;
+}
+
+footer p {
+    margin: 10px;
+    font-size: 1.5vw;
 }
 
 .hidden{
@@ -79,7 +95,16 @@ footer{
 }
 
 @media (max-width: 600px) {
+  .content{
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+  }
+  .history{
+    height: 350px;
+    margin-bottom: 18px;
+  }
   .conteudo{
-    font-size: 35px;
+    font-size: 25px;
   }
 }
