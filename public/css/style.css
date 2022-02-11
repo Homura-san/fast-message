@@ -1,4 +1,5 @@
 body{
+  background: rgb(31, 34, 36);
   justify-content: center;
 }
 header{
@@ -37,25 +38,43 @@ header{
   color: white;
 }
 .content{
-  width: 90%;
+  width: 100%;
   margin: 0%;
   display: flex;
+  justify-content: center;
   /* flex-direction: column; */
 }
 .history{
-  display: block;
-  width: 75%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   height: 550px;
   overflow-y: scroll;
   scroll-behavior: smooth;
 }
-.msg{
+.remetente{
+  padding-left: 10px;
   width: 65%;
-  background: #5f9ea0;
-  border: solid 0.5px #5f9ea0;
+  background: #ffffff3a;
+  border: solid 0.5px #ffffff3a;
   margin-top: 10px;
+  margin-left: 34%;
   margin-bottom: 20px;
   border-radius: 6px;
+  color: #FFF
+}
+.receptor{
+  padding-left: 10px;
+  width: 65%;
+  background: rgba(255, 255, 255, 0.973);
+  border: solid 0.5px rgba(255, 255, 255, 0.973);
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+}
+.remetente i{
+  color: white;
 }
 .erase{
   background: none;
@@ -75,6 +94,10 @@ header{
   justify-content: center;
   width: 100%;
   margin-bottom: 50px;
+}
+#send{
+  color: white;
+  border: solid 1px rgba(255, 255, 255, 0.6);
 }
 footer {
     display: flex;

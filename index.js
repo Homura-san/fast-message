@@ -16,23 +16,29 @@ app.engine('.hbs', exphbs.engine({
 app.set('view engine', '.hbs')
 
 app.get('/', (req, res) => {
+  res.render('home')
+})
+
+app.get('/init', (req, res) => {
   
-  db.query("SELECT * FROM chat", (error, results) => {
-    if(error) return res.status(500).send(error)
-    res.render('home', {results})
+  db.query("SELECT * FROM chat ORDER BY id", (error, results) => {
+    if(error) return res.status(500).json({error: true})
+    res.json(results)
   })
 })
 
 app.post('/chat', (req, res) => {
   moment.locale('pt-br')
   var user = {...req.body}
+  
   try {
+    user.nome !== 'Erick' ? user.tipo = 'receptor' : user.tipo = 'remetente'
   if(!user.nome) throw 'Favor informe o nome do usuário'
   if(!user.conteudo) throw 'Favor informe a mensagem!'
   db.query(`INSERT INTO chat 
-      (conteudo, data, nome) 
+      (conteudo, data, nome, tipo) 
         VALUES 
-      ("${user.conteudo}", "${moment().format('llll')}", "${user.nome}")`, (error) => {
+      ("${user.conteudo}", "${moment().format('llll')}", "${user.nome}", "${user.tipo}")`, (error) => {
     if(error) return res.status(500).send(error.sqlMessage)
     res.status(200).send()
   })

@@ -1,40 +1,13 @@
 <header>
   <i class="fa fa-bandcamp" aria-hidden="true"></i>
-  <div></div>
+  
   <div class="title">Fast Message</div>
 
-  {{!-- <div class="drop">
-    <div class="container-form">
-            <div>Qual o seu nome?</div>
-            <div class="form-login-or-cad">
-              <div class="cad row mt-2 mb-2 w-75">
-                  <input class="" placeholder="Insira seu nome" type="text" id="nome" size="20" />
-              </div>
-    <div class="mb-2 w-75">
-        <button class="a-login-or-cad" onclick="" id="cad-button">Enviar</button>
-    </div> --}}
-</div>
-        </div>
-  </div>
 </header>
 <div class="content">
   
   <div class="history">
-    {{#each results}}
-    <div class="msg">
-      <div class="hidden">
-        {{this.id}}
-      </div>
-      <div class="conteudo">
-        {{this.nome}} -
-        {{this.conteudo}}
-        <button onclick="erase({{this.id}})" class="erase"><i class="fa fa-trash" aria-hidden="true"></i></button>
-      </div>
-      <div class="data">
-        {{this.data}}
-      </div>
-  </div>
-    {{/each}}
+    
   </div>
   {{!-- <div class="input" id="nomecamp">
     <input class="form-control" placeholder="Insira seu nome" type="text" id="nome" />
@@ -50,11 +23,11 @@
     <span class="input-group-text" id="">Insira seu nome</span>
   </div>
   <input type="text" placeholder="Nome" class="form-control" id="nome">
-  <input type="text" placeholder="Corpo da mensagem" class="form-control" id="insert">
+  <input type="text" placeholder="Corpo da mensagem (Aperte enter para enviar)" class="form-control" id="insert">
 </div>
 
   {{!-- <input type="text" id="insert" placeholder="Insira sua mensagem aqui..." /> --}}
-  <button type="submit" class="btn btn-outline-success" onclick="enviarMsg()">Enviar</button>
+  <button type="submit" class="btn btn-outline-primary" id="send" onclick="enviarMsg()">Enviar</button>
 </div>
 
 <footer>

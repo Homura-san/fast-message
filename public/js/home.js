@@ -1,3 +1,4 @@
+let mensagem = document.querySelector('.history')
 function enviarMsg() {
   var nome = document.getElementById('nome').value
   var user = {
@@ -15,7 +16,8 @@ function enviarMsg() {
         if (res) throw res
         var msgs = document.getElementById('insert')
         msgs.value = null
-        document.location.reload(true)
+        loadMsg()
+        // document.location.reload(true)
       })
       .catch((err) => alert(err))
   }
@@ -32,9 +34,9 @@ function enviarMsg() {
 
 function erase(a) {
   fetch(`del/${a}`, { method: "DELETE" })
-    .then(() => console.log('Excluído!'))
+    .then(() => loadMsg())
     .catch((err) => /*alert('Opss! Houve um erro! - erase(a)')*/ console.log(err))
-  document.location.reload(true)
+  
 }
 
 const inputEle = document.getElementById('insert');
@@ -77,3 +79,57 @@ function loadName() {
   nomes.value = !getName() ? null : getName().nome
 }
 loadName()
+
+function loadMsg(){
+  
+  fetch('/init', {method: 'GET'})
+  .then(res => res.json())
+  .then(data => {
+    if(data.error) throw 'Houve um erro no banco de dados.'
+  //   {{#each results}}
+  //   <div class="msg">
+  //     <div class="hidden">
+  //       {{this.id}}
+  //     </div>
+  //     <div class="conteudo">
+  //       {{this.nome}} -
+  //       {{this.conteudo}}
+  //       <button onclick="erase({{this.id}})" class="erase"><i class="fa fa-trash" aria-hidden="true"></i></button>
+  //     </div>
+  //     <div class="data">
+  //       {{this.data}}
+  //     </div>
+  // </div>
+  //   {{/each}}
+  mensagem.innerHTML = null
+    data.map(a => {
+      if(a.tipo === 'receptor'){
+        mensagem.innerHTML += `
+        <div class="receptor">
+          <div class="conteudo">
+            ${a.nome} -
+            ${a.conteudo}
+            <button onclick="erase(${a.id})" class="erase"><i class="fa fa-trash" aria-hidden="true"></i></button>
+          </div>
+          <div class="data">
+            ${a.data}
+          </div>
+        </div>`
+      } else{
+        mensagem.innerHTML += `
+        <div class="remetente">
+          <div class="conteudo">
+            ${a.nome} -
+            ${a.conteudo}
+            <button onclick="erase(${a.id})" class="erase"><i class="fa fa-trash" aria-hidden="true"></i></button>
+          </div>
+          <div class="data">
+            ${a.data}
+          </div>
+        </div>`
+      }
+    })
+    })
+  .catch(err => alert(err))
+}
+loadMsg()
